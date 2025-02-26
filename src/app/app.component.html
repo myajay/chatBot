@@ -1,0 +1,47 @@
+<div class="container" >
+  <div class="header">
+    <h1 style="color: rgb(44, 35, 119);">One-Stop</h1>
+  </div>
+
+  <!-- Conversation Display -->
+  <div class="conversation" style="text-align: center;justify-content: center;">
+    <div *ngFor="let message of conversation" 
+         class="message-card" style="text-align: center;"
+         [ngClass]="{'user': message.role === 'user', 'response': message.role === 'response'}">
+      <p>{{ message.text }}</p>
+    </div>
+  </div>
+
+  <!-- Input Section -->
+  <div class="input-section">
+    <textarea
+      [(ngModel)]="userInput"
+      placeholder="Enter your text here"
+      rows="4"
+      class="input-textarea"
+      (keydown.enter)="onSubmit()"
+    ></textarea>
+    <div class="button-container">
+      <button 
+        (click)="onSubmit()" 
+        [disabled]="loading" 
+        class="submit-btn">
+        <span *ngIf="!loading">Send</span>
+        <span *ngIf="loading" class="spinner"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <div class="footer">
+    <p>Developed by <strong>Ajay Myaka</strong></p>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/ajay-myaka-3453b1342/" target="_blank">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="mailto:myajay095@example.com">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </div>
+  </div>
+</div>
