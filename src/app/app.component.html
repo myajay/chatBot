@@ -26,22 +26,29 @@
         (click)="onSubmit()" 
         [disabled]="loading" 
         class="submit-btn">
-        <span *ngIf="!loading">Send</span>
-        <span *ngIf="loading" class="spinner"></span>
+        <!--Angular 14 syntax-->
+        <!-- <span *ngIf="!loading">Send</span>
+        <span *ngIf="loading" class="spinner"></span> -->
+        @if (!loading) {
+          <span>Send</span>
+        } @else {
+          <span class="spinner"></span>
+        }
       </button>
     </div>
   </div>
 
   <!-- Footer Section -->
   <div class="footer">
-    <p>Developed by <strong>Ajay Myaka</strong></p>
+    <p>Developed by <strong>Ajay Myaka [Angular18]</strong></p>
     <div class="social-icons">
       <a href="https://www.linkedin.com/in/ajay-myaka-3453b1342/" target="_blank">
         <i class="fab fa-linkedin"></i>
       </a>
-      <a href="mailto:myajay095@example.com">
+      <a href="mailto:ajaymyaka@gmail.com">
         <i class="fas fa-envelope"></i>
       </a>
     </div>
   </div>
 </div>
+

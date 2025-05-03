@@ -1,5 +1,11 @@
+import { RouterOutlet } from '@angular/router';
+
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
+// import { BrowserModule } from '@angular/platform-browser'; //removed 
+import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { NgIf, NgFor,NgClass } from '@angular/common'; // Import individual directives
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 interface ConversationMessage {
   role: string; // 'user' or 'response'
@@ -8,10 +14,12 @@ interface ConversationMessage {
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet,FormsModule,NgIf, NgFor,NgClass,HttpClientModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']  // Ensure this points to the correct SASS file
+  styleUrl: './app.component.sass'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'chatBot';
   userInput: string = '';
   loading: boolean = false;
@@ -81,3 +89,5 @@ export class AppComponent implements OnInit {
     );
   }
 }
+
+
